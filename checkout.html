@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	   <link rel="stylesheet" href="site.css">
+	 </head>
+	<br>
+	<div class=navBar>
+	<ul>
+	 <li><a href="website2.php" class="button">Home</a>
+	 <li><a href="cart.php">Cart</a></li>
+	  <li class="dropdown">
+		<a class="dropbtn">Shop by Brand</a>    
+		<div class="dropdown-content">
+			<?php
+				$increment = 0;
+				while($row = $result->fetch_object()) {
+					$company[$increment] = $row->Company;
+					echo "<a href='?brand=$increment' name='brand'>$company[$increment]</a>";
+					$increment++;
+				}
+			?>
+		 </div>
+	  </li>
+		<li class="dropdown">
+		<a class="dropbtn">Shop by Products</a>
+		<div class="dropdown-content">
+			<?php
+				$increase = 0;
+				while($row = $result2->fetch_object()) {
+					$category[$increase] = $row->Category;
+					echo "<a href='?product=$increase' name='product'>$category[$increase]</a>"; 
+					$increase++;
+				}
+			?> 
+		</div>
+	  </li>
+	<form class="example" action="action_page.php">
+	<input type="text" placeholder="Search.." name="search">
+		  <button type="submit">Search</button>
+	</form>
+	</ul>
+	</div> 
+		</div>
+		<h1>CHECKOUT</h1>
+			<head>
+				<link rel="stylesheet" href="style.css">
+			</head>
+		<form>
+		  Name:<input type="text" name="firstname"><br>
+		  Password:<input type="password" name="pwd"><br>
+		  Credit Card:<input type="text" name="card"><br>
+		</form>
+		<ul>
+		  <button class="submit" type="order">Submit order</button>
+		</ul>
+	<br>
+</html>
